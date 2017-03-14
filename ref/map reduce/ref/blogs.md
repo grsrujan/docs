@@ -1,0 +1,2 @@
+- [tutorial](https://github.com/kite-sdk/kite/wiki/Hadoop-MapReduce-Tutorial)
+- [writable and writable comparable](https://acadgild.com/blog/writable-and-writablecomparable-in-hadoop/)

@@ -1,0 +1,13 @@
+### contents
+- [Out of memory issue]()
+- [shuffling]()
+- [Kyro serialization]()
+- [num of executors]()
+- [num of cores]()
+- [broadcast variables]()
+- [compression codec(lzf)]()
+- [memory management(caching,shuffling,tasks)]()
+- [spark.shuffle.memoryFraction]()
+- [spark.storage.memoryFraction]()
+- [garbage collection]()
+- [speculative execution]()

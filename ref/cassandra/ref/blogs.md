@@ -1,0 +1,1 @@
+- [slideshare macy's](http://www.slideshare.net/planetcassandra/apache-cassandra-at-macys)

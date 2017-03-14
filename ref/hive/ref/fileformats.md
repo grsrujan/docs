@@ -1,0 +1,10 @@
+### contents
+- [Text](https://github.com/grsrujan/docs/blob/master/ref/hive/ref/text.md)
+- [Sequence file](https://github.com/grsrujan/docs/blob/master/ref/hive/ref/sequence.md)
+  - [example1](http://hadooptutorial.info/hadoop-sequence-files-example/)
+  - [example2](http://hadooptutorial.info/hadoop-sequence-files-example/)
+  - [example3](https://thinkbiganalytics.com/hadoop-sequence-files-and-a-use-case/)
+- [RC](https://github.com/grsrujan/docs/blob/master/ref/hive/ref/RC.md)
+- [ORC](https://github.com/grsrujan/docs/blob/master/ref/hive/ref/ORC.md)
+- [Parquet](https://github.com/grsrujan/docs/blob/master/ref/hive/ref/parquet.md)
+- [Avro](https://github.com/grsrujan/docs/blob/master/ref/hive/ref/avro.md)

@@ -1,0 +1,4 @@
+- [mortar exampes](https://github.com/mortardata/mortar-examples/tree/master/pigscripts)
+- [Hortonworks-tutorial](https://hortonworks.com/hadoop-tutorial/how-to-process-data-with-apache-pig/)
+- [Hortonworks-tutorial1](https://hortonworks.com/hadoop-tutorial/how-to-use-basic-pig-commands/)
+- [passing file as argument](http://sudarmuthu.com/blog/passing-command-line-arguments-to-pig-scripts/)

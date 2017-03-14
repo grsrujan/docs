@@ -1,0 +1,1 @@
+https://blogs.oracle.com/datawarehousing/entry/hadoop_compression_choosing_compression_codec

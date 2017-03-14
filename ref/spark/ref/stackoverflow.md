@@ -1,0 +1,1 @@
+- [how-do-map-and-reduce-methods-work-in-spark-rdds](http://stackoverflow.com/questions/32519070/how-do-map-and-reduce-methods-work-in-spark-rdds)

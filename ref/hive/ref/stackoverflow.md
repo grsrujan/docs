@@ -1,0 +1,2 @@
+- [how-to-delete-and-update-a-record-in-hive](http://stackoverflow.com/questions/17810537/how-to-delete-and-update-a-record-in-hive)
+- [how-to-improve-performance-of-loading-data-from-non-partition-table-into-orc-par](http://stackoverflow.com/questions/28920328/how-to-improve-performance-of-loading-data-from-non-partition-table-into-orc-par)

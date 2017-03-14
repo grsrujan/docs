@@ -1,0 +1,1 @@
+- [how-to-refine-and-visualize-sentiment-data](http://hortonworks.com/hadoop-tutorial/how-to-refine-and-visualize-sentiment-data/)

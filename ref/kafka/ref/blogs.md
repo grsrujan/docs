@@ -1,0 +1,8 @@
+- [Tutorial](http://howtoprogram.xyz/big-data-technologies/apache-kafka-tutorial/)
+- [Tutorial1](http://khangaonkar.blogspot.com/2014/05/apache-kafka-java-tutorial.html)
+- [Flafka](http://blog.cloudera.com/blog/2014/11/flafka-apache-flume-meets-apache-kafka-for-event-processing/)
+- [storm-kafka-cassandra](http://www.godatafy.com/poc/web-analytic-using-stormkafka-and-cassandra/)
+- [confluent](https://www.confluent.io/blog/announcing-confluent-a-company-for-apache-kafka-and-real-time-data/)
+- [Confluent1](https://www.confluent.io/blog/stream-data-platform-1/)
+- [Kafka-spark-Avro](http://aseigneurin.github.io/2016/03/02/kafka-spark-avro-kafka-101.html)
+- [Linkedin](https://engineering.linkedin.com/distributed-systems/log-what-every-software-engineer-should-know-about-real-time-datas-unifying)
