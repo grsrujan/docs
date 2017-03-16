@@ -1,1 +1,5 @@
-
+- [Partitioning]
+- [Bucketing]
+- [Vectorization]
+- [File formats]
+- [Compression Techniques]
