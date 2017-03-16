@@ -3,8 +3,8 @@
 - [Partitioning](#partitioning)
 - [Bucketing](#bucketing)
 - [Vectorization](#vectorization)
-- [File formats](#file formats)
-- [Compression Techniques](#compression Techniques)
+- [File Formats](#file-formats)
+- [Compression Techniques](#compression-techniques)
 
 ## Partitioning
 
@@ -43,7 +43,7 @@ So, bucketing works well when the field has high cardinality and data is evenly 
 
 ## Vectorization
 
-## File formats
+## File Formats
 
 ### Avro
 
@@ -138,7 +138,7 @@ CSV files are still quite common and often used for exchanging data between Hado
 
 Sequence files store data in a binary format with a similar structure to CSV. Like CSV, sequence files do not store metadata with the data so the only schema evolution option is appending new fields. However, unlike CSV, sequence files do support block compression. Due to the complexity of reading sequence files, they are often only used for “in flight” data such as intermediate data storage used within a sequence of MapReduce jobs. 
 
-## Compression techniques
+## Compression Techniques
 
 
 
