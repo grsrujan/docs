@@ -21,3 +21,22 @@
 - [Financial-mapr](https://www.mapr.com/solutions/industry/financial-services-use-cases)
 - [Financial datameer](https://datameer-wp-production-origin.datameer.com/wp-content/uploads/2015/10/eBook-3-Top-BigData-UseCase-in-Financial-Services.pdf)
 - [storm-integration-with-kafka](http://www.allprogrammingtutorials.com/tutorials/storm-integration-with-kafka.php)
+
+# general use cases
+- [Different ways to offload mainframe data to hadoop]()
+
+In general, we will have three different data sources from mainframes: flat files, VSAM files and a DBMS such as DB2 or IMS.We can use following tools: <br>
+#### Informatica BDE(Big Data Edition)<br>
+#### Talend Enterprise Edition<br>
+#### Syncsort-dmx(plugin)<br>
+#### Sqoop(with following limitations)<br>
+* Sqoop-mainframe can only handle Fixed length files, variable length files are not supported.
+* Only folder structures like data can be downloaded i.e., PDS(partitioned data sets) and Fixed length GDGs as a whole.
+* EBCIDIC to ASCII conversion return invalid data when the data has computational fields.<br>
+- [custom scripts(cobal2hive)](https://rbheemana.github.io/Cobol-to-Hive/)<br>
+#### converting vsam --flat files using IDCAMS utility and load into Hadoop<br>
+#### zaloni bedrock<br>
+#### veristorm<br>
+- [setting passwordless connection](http://www.rebol.com/docs/ssh-auto-login.html)
+- [Dealing with CDC(change data capture data in Hadoop)]()
+- [How to handle dynamic schema changes in hive](https://hadoopist.wordpress.com/2015/07/08/how-to-handle-schema-changesevolutes-in-hive-like-column-additions-at-the-source-db/)
