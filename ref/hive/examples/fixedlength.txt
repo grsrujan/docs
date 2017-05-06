@@ -1,0 +1,21 @@
+For fixed length files the total length of each record will be same.
+File with delimited
+example data file with tab delimited: 
+
+991818  AD  yturd 11/23/2011
+652524  SV  rwtwg 08/20/2012
+
+create table test(id int,code string,indicator string,gen_date string)
+ row format delimited fields terminated by '\t';
+
+File without delimited
+991818,AD|yturd 11/23/2011
+652524,SV|rwtwg 08/20/2012
+As the data in file contains uneven delimiter we have to convert input data file to delimited file by using gawk command.
+
+gawk '$1=$1' FIELDWIDTHS='6 1 2 1 5 1 10' OFS=, filename   (This will create csv file)
+
+991818,,ADyturd,,11/23/2011
+652524,,SV,,rwtwg, ,08/20/2012
+
+create staging table and Load the data and then load the data into final table.
