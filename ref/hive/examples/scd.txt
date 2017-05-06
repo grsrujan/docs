@@ -1,0 +1,151 @@
+CREATE TABLE if not exists final(
+    id bigint ,
+    name string,
+    start_date string ,
+    end_date string 
+)
+partitioned by (indicator string comment 'y, n')
+stored as orc;
+
+insert into final partition(indicator='y') values(1,'ana','2000-01-01','9999-12-31');
+insert into final partition(indicator='y') values(2,'ram','2000-01-01','9999-12-31');
+insert into final partition(indicator='y') values(3,'akhil','2000-01-01','9999-12-31');
+insert into final partition(indicator='y') values(4,'subbu','2000-01-01','9999-12-31');
+insert into final partition(indicator='y') values(5,'rakesh','2000-01-01','9999-12-31');
+insert into final partition(indicator='y') values(6,'anish','2000-01-01','9999-12-31');
+insert into final partition(indicator='y') values(7,'avinash','2000-01-01','9999-12-31');
+insert into final partition(indicator='y') values(8,'kevin','2000-01-01','9999-12-31');
+insert into final partition(indicator='y') values(9,'ramesh','2000-01-01','9999-12-31');
+
+
+
+
+create table if not exists origin (
+user_id bigint,
+name string,
+bdate string) stored as TEXTFILE;
+
+insert into origin values(3,'ali','2015-01-01');
+insert into origin values(4,'srinu','2016-01-01');
+insert into origin values(5,'srikanth','2013-01-01');
+insert into origin values(6,'sridhar','2012-01-01');
+insert into origin values(7,'raj','2011-01-01');
+insert into origin values(10,'raj','2011-01-01');
+
+
+
+insert into origin values(3,'raj','2014-01-01');
+
+
+
+
+set hive.exec.dynamic.partition.mode=nonstrict;
+
+
+CREATE TABLE if not exists temp1(
+    id bigint ,
+    name string,
+    start_date string ,
+    end_date string 
+)
+partitioned by (indicator string comment 'y, n:')
+stored as orc;
+
+
+--tmp2 saving the scd data
+CREATE TABLE if not exists temp2(
+    id bigint ,
+    name string,
+    start_date string ,
+    end_date string 
+)
+partitioned by (indicator string comment 'y, n')
+stored as orc;
+
+
+INSERT OVERWRITE TABLE temp1 PARTITION(indicator)
+SELECT 
+    user_id as id,
+    name as name,
+    bdate as start_date,
+    '9999-12-31' as end_date,
+    'y' as indicator
+FROM origin;
+
+INSERT INTO TABLE temp2 PARTITION(indicator)
+SELECT
+    t1.id,
+    t1.name,
+    t1.start_date,
+    t1.end_date,
+    t1.indicator
+FROM
+    temp1 t1
+LEFT OUTER JOIN 
+    final t2
+ON 
+    t1.id = t2.id
+WHERE t2.id is NULL;
+
+INSERT INTO TABLE temp2 PARTITION(indicator)
+SELECT
+    t2.id,
+    t2.name,
+    t2.start_date,
+    t2.end_date,
+    t2.indicator
+FROM
+    temp1 t1
+RIGHT OUTER JOIN 
+    final t2
+ON 
+    t1.id = t2.id
+WHERE t1.id is NULL;
+
+
+new records
+INSERT INTO TABLE temp2 PARTITION(indicator)
+SELECT
+    t1.id,
+    t1.name,
+    t1.start_date,
+case when  t1.start_date < t2.end_date then t2.end_date else '9999-12-31' end as end_date ,
+    t1.indicator
+FROM
+    temp1 t1
+INNER JOIN 
+    (
+        SELECT * FROM final 
+        WHERE indicator = 'y'
+    ) t2
+ON 
+    t1.id = t2.id;
+
+INSERT INTO TABLE temp2 PARTITION(indicator)
+SELECT
+    t2.id,
+    t2.name,
+t2.start_date ,
+case when  t1.start_date < t2.end_date AND t2.end_date <> '9999-12-31'then t1.start_date else t2.end_date end as end_date ,
+case when  t2.end_date <> '9999-12-31' then 'n' else 'y' end as indicator
+FROM
+    temp1 t1
+INNER JOIN 
+    (
+        SELECT * FROM final 
+
+    ) t2
+ON 
+    t1.id = t2.id ;
+
+
+	
+INSERT OVERWRITE TABLE final PARTITION(indicator)
+SELECT
+    t1.id,
+    t1.name,
+    t1.start_date,
+    t1.end_date,
+    t1.indicator
+FROM
+    temp2 t1;
