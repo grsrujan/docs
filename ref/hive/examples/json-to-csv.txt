@@ -1,0 +1,38 @@
+json-csv.py
+
+import csv, json, sys
+
+input = open(sys.argv[1])
+data = json.load(input)
+input.close()
+
+output = csv.writer(sys.stdout)
+
+output.writerow(data[0].keys())  # header row
+
+for row in data:
+    output.writerow(row.values())
+    
+ 
+ 
+test.json
+
+[
+ {
+   "code": "SDF",
+   "countryCode": "AF",
+   "DivisionCode": "PDD",
+   "locationName": "Bagm",
+   "divDate": "2013-01-01"
+ },
+ {
+   "code": "BV",
+   "countryCode": "AF",
+   "DivisionCode": "",
+   "locationName": "Ban",
+   "divDate": "2011-02-02"
+ }
+]
+
+
+python json-csv.py test.json >> test.csv
