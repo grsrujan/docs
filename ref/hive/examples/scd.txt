@@ -124,8 +124,8 @@ SELECT
     t2.id,
     t2.name,
 t2.start_date ,
-case when  t1.start_date < t2.end_date AND t2.end_date <> '9999-12-31' then t1.start_date else t2.end_date end as end_date ,
-case when t2.end_date ='9999-12-31' then 'y' else 'n' end as indicator
+case when  t1.start_date < t2.end_date then t1.start_date else t2.end_date end as end_date ,
+'n' as indicator
 FROM
     temp1 t1
 INNER JOIN 
@@ -135,8 +135,6 @@ INNER JOIN
     ) t2
 ON 
     t1.id = t2.id ;
-
-
 
 	
 INSERT OVERWRITE TABLE final PARTITION(indicator)
