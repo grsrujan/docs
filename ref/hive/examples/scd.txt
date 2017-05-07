@@ -103,7 +103,7 @@ ON
 WHERE t1.id is NULL;
 
 
-new updated records
+--new updated records
 INSERT INTO TABLE temp2 PARTITION(indicator)
 SELECT
     t1.id,
@@ -118,14 +118,14 @@ INNER JOIN
 ON 
     t1.id = t2.id;
 
-old updated records
+--old updated records
 INSERT INTO TABLE temp2 PARTITION(indicator)
 SELECT
     t2.id,
     t2.name,
 t2.start_date ,
-case when  t1.start_date < t2.end_date then t1.start_date else t2.end_date end as end_date ,
-'n' as indicator
+case when  t1.start_date < t2.end_date AND t2.end_date <> '9999-12-31' then t1.start_date else t2.end_date end as end_date ,
+case when t2.end_date ='9999-12-31' then 'y' else 'n' end as indicator
 FROM
     temp1 t1
 INNER JOIN 
@@ -135,6 +135,7 @@ INNER JOIN
     ) t2
 ON 
     t1.id = t2.id ;
+
 
 
 	
