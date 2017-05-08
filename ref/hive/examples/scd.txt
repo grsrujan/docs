@@ -120,6 +120,7 @@ ON
 
 --old updated records
 INSERT INTO TABLE temp2 PARTITION(indicator)
+select * from (
 SELECT
     t2.id,
     t2.name,
@@ -132,6 +133,19 @@ INNER JOIN
     final t2
 ON 
     t1.id = t2.id where t1.start_date < t2.end_date and t1.start_date > t2.start_date
+UNION ALL
+SELECT
+    t2.id,
+    t2.name,
+t2.start_date ,
+t2.end_date ,
+case when t2.end_date <>'9999-12-31' then 'n' else 'y' end as indicator
+FROM
+    temp1 t1
+INNER JOIN 
+    final t2
+ON 
+    t1.id = t2.id where t1.start_date < t2.end_date and t1.start_date < t2.start_date ) as a;
 
 	
 INSERT OVERWRITE TABLE final PARTITION(indicator)
