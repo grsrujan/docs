@@ -1,0 +1,18 @@
+test.pig
+register '/usr/hdp/current/pig-client/piggybank.jar';
+d = load '/user/test/t.txt' using org.apache.pig.piggybank.storage.FixedWidthLoader('-3,4-9,10-','SKIP_HEADER','EMPID: CHARARRAY, NAME: CHARARRAY, DEPT: CHARARRAY');
+store d into '/user/test/data' using org.apache.pig.piggybank.storage.CSVExcelStorage(',', 'YES_MULTILINE', 'UNIX');
+
+t.txt
+#data file
+101justinCS
+102ram   EE
+
+output :- part-m-00000
+101,justin,CS
+102,ram   ,EE
+
+test.pig path --> local 
+jar file path --> local 
+/user/test/t.txt path --> hdfs
+/user/test/data path --> hdfs
