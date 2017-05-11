@@ -1,0 +1,31 @@
+12 justin    dfer 5000.00
+13 john      wedsw4500.00
+14 sai       swer 3400.00
+15 oliver    rtya 5300.00
+16 martin    sdes 6500.00
+
+ex1:-
+case class DataUnit(s1: Int, s2: String, s3:Int, s4:Double)
+
+sc.textFile('your_file_path')
+  .map(l => (l.substring(0, 3).trim(), l.substring(3, 13).trim(), l.substring(13,18).trim(), l.substring(18,25).trim()))
+  .map({ case (e1, e2, e3, e4) => DataUnit(e1.toInt, e2, e3.toInt, e4.toDouble) })
+  .toDF
+  
+
+ex2:-
+sqlContext.createDataFrame(sc.textFile("<file path>").map { x => getRow(x) }, schema)
+  
+def getRow(x : String) : Row={    
+val columnArray = new Array[String](4)
+columnArray(0)=x.substring(0,3)
+columnArray(1)=x.substring(3,13)
+columnArray(2)=x.substring(13,18)
+columnArray(3)=x.substring(18,25)
+Row.fromSeq(columnArray)  
+}
+
+val schemaString = "id,empName,code,salary" 
+val fields = schemaString.split(",")
+  .map(fieldName => StructField(fieldName, StringType, nullable = true)) 
+val schema = StructType(fields)
